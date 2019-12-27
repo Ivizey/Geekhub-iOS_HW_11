@@ -8,13 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+class LecturesViewController: UIViewController {
+    @IBOutlet private weak var lecturesTable: UITableView!
+    @IBAction private func addLecturesButtonAction(_ sender: UIBarButtonItem) {
+        createAlert()
     }
-
-
+    
+    private func createAlert() {
+        let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Theme"
+        }
+        alert.addTextField { (textField) in
+            //picker view || alert
+            textField.placeholder = "Select lector"
+        }
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
+            if let name = alert.textFields?.first?.text {
+                print("You name is \(name)")
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
 }
 

@@ -9,22 +9,25 @@
 import UIKit
 
 class LectorsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet private weak var lectorsTable: UITableView!
+    @IBAction private func addStudentButtonAction(_ sender: UIBarButtonItem) {
+        createAlert()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func createAlert() {
+        let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Name"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Surename"
+        }
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
+            if let name = alert.textFields?.first?.text {
+                print("You name is \(name)")
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
-    */
-
 }
