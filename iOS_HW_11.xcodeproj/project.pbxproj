@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		47F5CBDA23B6452C006A3A9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBD923B6452C006A3A9B /* AppDelegate.swift */; };
 		47F5CBDC23B6452C006A3A9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBDB23B6452C006A3A9B /* SceneDelegate.swift */; };
-		47F5CBDE23B6452C006A3A9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBDD23B6452C006A3A9B /* ViewController.swift */; };
+		47F5CBDE23B6452C006A3A9B /* LecturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBDD23B6452C006A3A9B /* LecturesViewController.swift */; };
 		47F5CBE123B6452C006A3A9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F5CBDF23B6452C006A3A9B /* Main.storyboard */; };
 		47F5CBE423B6452C006A3A9B /* iOS_HW_11.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBE223B6452C006A3A9B /* iOS_HW_11.xcdatamodeld */; };
 		47F5CBE623B6452F006A3A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47F5CBE523B6452F006A3A9B /* Assets.xcassets */; };
 		47F5CBE923B6452F006A3A9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F5CBE723B6452F006A3A9B /* LaunchScreen.storyboard */; };
+		47F5CBF223B6467A006A3A9B /* HomeworksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBF123B6467A006A3A9B /* HomeworksViewController.swift */; };
+		47F5CBF423B64696006A3A9B /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBF323B64696006A3A9B /* StudentsViewController.swift */; };
+		47F5CBF623B646BC006A3A9B /* LectorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBF523B646BC006A3A9B /* LectorsViewController.swift */; };
+		47F5CBF923B64755006A3A9B /* FetchedResultControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CBF823B64755006A3A9B /* FetchedResultControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47F5CBD623B6452C006A3A9B /* iOS_HW_11.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_HW_11.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47F5CBD923B6452C006A3A9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47F5CBDB23B6452C006A3A9B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		47F5CBDD23B6452C006A3A9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47F5CBDD23B6452C006A3A9B /* LecturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturesViewController.swift; sourceTree = "<group>"; };
 		47F5CBE023B6452C006A3A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47F5CBE323B6452C006A3A9B /* iOS_HW_11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS_HW_11.xcdatamodel; sourceTree = "<group>"; };
 		47F5CBE523B6452F006A3A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47F5CBE823B6452F006A3A9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47F5CBEA23B6452F006A3A9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47F5CBF123B6467A006A3A9B /* HomeworksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworksViewController.swift; sourceTree = "<group>"; };
+		47F5CBF323B64696006A3A9B /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
+		47F5CBF523B646BC006A3A9B /* LectorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectorsViewController.swift; sourceTree = "<group>"; };
+		47F5CBF823B64755006A3A9B /* FetchedResultControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +68,34 @@
 			children = (
 				47F5CBD923B6452C006A3A9B /* AppDelegate.swift */,
 				47F5CBDB23B6452C006A3A9B /* SceneDelegate.swift */,
-				47F5CBDD23B6452C006A3A9B /* ViewController.swift */,
+				47F5CBF823B64755006A3A9B /* FetchedResultControllerDelegate.swift */,
+				47F5CBF723B646CD006A3A9B /* ViewControllers */,
 				47F5CBDF23B6452C006A3A9B /* Main.storyboard */,
 				47F5CBE523B6452F006A3A9B /* Assets.xcassets */,
 				47F5CBE723B6452F006A3A9B /* LaunchScreen.storyboard */,
 				47F5CBEA23B6452F006A3A9B /* Info.plist */,
-				47F5CBE223B6452C006A3A9B /* iOS_HW_11.xcdatamodeld */,
+				47F5CBF023B645B2006A3A9B /* Core Data */,
 			);
 			path = iOS_HW_11;
+			sourceTree = "<group>";
+		};
+		47F5CBF023B645B2006A3A9B /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				47F5CBE223B6452C006A3A9B /* iOS_HW_11.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		47F5CBF723B646CD006A3A9B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				47F5CBDD23B6452C006A3A9B /* LecturesViewController.swift */,
+				47F5CBF123B6467A006A3A9B /* HomeworksViewController.swift */,
+				47F5CBF323B64696006A3A9B /* StudentsViewController.swift */,
+				47F5CBF523B646BC006A3A9B /* LectorsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +169,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47F5CBF223B6467A006A3A9B /* HomeworksViewController.swift in Sources */,
+				47F5CBF923B64755006A3A9B /* FetchedResultControllerDelegate.swift in Sources */,
 				47F5CBE423B6452C006A3A9B /* iOS_HW_11.xcdatamodeld in Sources */,
-				47F5CBDE23B6452C006A3A9B /* ViewController.swift in Sources */,
+				47F5CBF423B64696006A3A9B /* StudentsViewController.swift in Sources */,
+				47F5CBDE23B6452C006A3A9B /* LecturesViewController.swift in Sources */,
+				47F5CBF623B646BC006A3A9B /* LectorsViewController.swift in Sources */,
 				47F5CBDA23B6452C006A3A9B /* AppDelegate.swift in Sources */,
 				47F5CBDC23B6452C006A3A9B /* SceneDelegate.swift in Sources */,
 			);
@@ -298,7 +330,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.geeknub.iOS-HW-11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -316,7 +348,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.geeknub.iOS-HW-11";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
