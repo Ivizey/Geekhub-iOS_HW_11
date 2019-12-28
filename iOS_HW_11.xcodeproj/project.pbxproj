@@ -28,6 +28,7 @@
 		47F5CC0D23B68041006A3A9B /* Homework+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CC0323B68041006A3A9B /* Homework+CoreDataProperties.swift */; };
 		47F5CC0E23B68041006A3A9B /* Mark+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CC0423B68041006A3A9B /* Mark+CoreDataClass.swift */; };
 		47F5CC0F23B68041006A3A9B /* Mark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CC0523B68041006A3A9B /* Mark+CoreDataProperties.swift */; };
+		47F5CC1123B7778D006A3A9B /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F5CC1023B7778D006A3A9B /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		47F5CC0323B68041006A3A9B /* Homework+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Homework+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		47F5CC0423B68041006A3A9B /* Mark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mark+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		47F5CC0523B68041006A3A9B /* Mark+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mark+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		47F5CC1023B7778D006A3A9B /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				47F5CBD923B6452C006A3A9B /* AppDelegate.swift */,
 				47F5CBDB23B6452C006A3A9B /* SceneDelegate.swift */,
 				47F5CBF823B64755006A3A9B /* FetchedResultControllerDelegate.swift */,
+				47F5CC1023B7778D006A3A9B /* PickerView.swift */,
 				47F5CBF723B646CD006A3A9B /* ViewControllers */,
 				47F5CBDF23B6452C006A3A9B /* Main.storyboard */,
 				47F5CBE523B6452F006A3A9B /* Assets.xcassets */,
@@ -210,6 +213,7 @@
 				47F5CC0723B68041006A3A9B /* Student+CoreDataProperties.swift in Sources */,
 				47F5CBDE23B6452C006A3A9B /* LecturesViewController.swift in Sources */,
 				47F5CC0A23B68041006A3A9B /* Lecture+CoreDataClass.swift in Sources */,
+				47F5CC1123B7778D006A3A9B /* PickerView.swift in Sources */,
 				47F5CC0D23B68041006A3A9B /* Homework+CoreDataProperties.swift in Sources */,
 				47F5CBF623B646BC006A3A9B /* LectorsViewController.swift in Sources */,
 				47F5CBDA23B6452C006A3A9B /* AppDelegate.swift in Sources */,
