@@ -22,17 +22,16 @@ final class FetchedResultControllerDelegate: NSObject, NSFetchedResultsControlle
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let indexPath = indexPath else { return }
         switch type {
         case .insert:
             tableView?.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            tableView?.deleteRows(at: [indexPath], with: .fade)
+            tableView?.deleteRows(at: [indexPath!], with: .fade)
         case .update:
-            tableView?.reloadRows(at: [indexPath], with: .fade)
+            tableView?.reloadRows(at: [indexPath!], with: .fade)
         case .move:
-            tableView?.reloadRows(at: [indexPath], with: .fade)
-            tableView?.moveRow(at: indexPath, to: newIndexPath!)
+            tableView?.reloadRows(at: [indexPath!], with: .fade)
+            tableView?.moveRow(at: indexPath!, to: newIndexPath!)
         default:
             return
         }

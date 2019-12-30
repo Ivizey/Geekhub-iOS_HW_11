@@ -11,14 +11,9 @@ import CoreData
 
 class LecturesViewController: UIViewController {
     @IBOutlet private weak var lecturesTable: UITableView!
-    
-//    private let thePicker = UIPickerView()
-//    private let toolBar = UIToolbar()
-//    private let myPickerData = [String](arrayLiteral: "Peter", "Jane")
-
-    lazy var fetchedResultControllerDelegate = FetchedResultControllerDelegate(tableView: lecturesTable)
-    lazy var fetchedResultController: NSFetchedResultsController<Lecture> = {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private lazy var fetchedResultControllerDelegate = FetchedResultControllerDelegate(tableView: lecturesTable)
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private lazy var fetchedResultController: NSFetchedResultsController<Lecture> = {
         let fetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
         fetchRequest.sortDescriptors = []
         
@@ -31,26 +26,34 @@ class LecturesViewController: UIViewController {
         return controller
     }()
 
+    private let toolBar: UIToolbar = {
+        let toolBar = UIToolbar()
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        toolBar.setItems([doneButton], animated: true)
+        return toolBar
+    }()
+
+    private let picker: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .white
+        return picker
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        thePicker.delegate = self
-//        thePicker.backgroundColor = .white
-//        toolBar.barStyle = UIBarStyle.default
-//        toolBar.isTranslucent = true
-//        toolBar.sizeToFit()
-//        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
-//        toolBar.setItems([doneButton], animated: false)
+        picker.delegate = self
     }
 
     @IBAction private func addLecturesButtonAction(_ sender: UIBarButtonItem) {
-        insertNewObject(sender)
+        createAlert()
     }
-    
-    func insertNewObject(_ sender: Any) {
-        let context = self.fetchedResultController.managedObjectContext
+
+    private func insertItem(_ theme: String) {
         let lecture = Lecture(context: context)
-        lecture.lector = "lector"
+        lecture.theme = theme
         do {
             try context.save()
         } catch {
@@ -66,49 +69,53 @@ class LecturesViewController: UIViewController {
         }
         alert.addTextField { (textField) in
             textField.placeholder = "Select lector"
-//            textField.inputView = self.thePicker
-//            textField.inputAccessoryView = self.toolBar
+            textField.inputView = self.picker
+            textField.inputAccessoryView = self.toolBar
         }
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
-            if let name = alert.textFields?.first?.text {
-                print("You name is \(name)")
+            if let theme = alert.textFields?.first?.text {
+                self.insertItem(theme)
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    private func configureCell(_ cell: UITableViewCell, withLecture lecture: Lecture) {
-        cell.textLabel!.text = "Lecture"
-    }
 }
 
+//MARK: - UITableViewDataSource
 extension LecturesViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fetchedResultController.sections!.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultController.sections?.count ?? 0
+        fetchedResultController.sections![section].numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "lecturesCell", for: indexPath)
         let lecture = fetchedResultController.object(at: indexPath)
-        configureCell(cell, withLecture: lecture)
+        cell.textLabel?.text = lecture.theme
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        context.delete(fetchedResultController.object(at: indexPath))
+        try? context.save()
+    }
 }
-//extension LecturesViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return myPickerData.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return myPickerData[row]
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        print(myPickerData[row])
-//    }
-//}
+
+//MARK: - UIPickerViewDataSource, UIPickerViewDelegate
+extension LecturesViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 0
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "''"
+    }
+}
