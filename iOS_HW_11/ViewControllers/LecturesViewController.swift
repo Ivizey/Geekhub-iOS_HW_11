@@ -15,8 +15,7 @@ class LecturesViewController: UIViewController {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private lazy var fetchedResultController: NSFetchedResultsController<Lecture> = {
         let fetchRequest: NSFetchRequest<Lecture> = Lecture.fetchRequest()
-        fetchRequest.sortDescriptors = []
-        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "theme", ascending: true)]
         let controller = NSFetchedResultsController<Lecture>(fetchRequest: fetchRequest,
                                                              managedObjectContext: context,
                                                              sectionNameKeyPath: nil,
@@ -40,6 +39,11 @@ class LecturesViewController: UIViewController {
         let picker = UIPickerView()
         picker.backgroundColor = .white
         return picker
+    }()
+    
+    private let fetchRequest: NSFetchRequest<Lector> = {
+        var fetchRequest: NSFetchRequest<Lector> = Lector.fetchRequest()
+        return fetchRequest
     }()
 
     override func viewDidLoad() {
@@ -112,10 +116,13 @@ extension LecturesViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 0
+        let lectors = try? context.fetch(fetchRequest)
+        return lectors?.count ?? 0
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "''"
+        let lectors = try? context.fetch(fetchRequest)
+        let fullName = "\(lectors?[row].name! ?? "") \(lectors?[row].surname! ?? "")"
+        return fullName
     }
 }
