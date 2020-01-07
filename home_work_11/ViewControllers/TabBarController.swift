@@ -6,13 +6,14 @@
 //  Copyright © 2020 Pavel Bondar. All rights reserved.
 //
 
-import UIKit.UITabBarController
+import UIKit
 import CoreData
 
 class TabBarController: UITabBarController {
 
     private let nameView = ["Lecture", "Lector", "Student", "Home work"]
     private let context = CoreDataStack.shared.persistentContainer.viewContext
+    var textFieldPicker: UITextField?
 
     private let toolBar: UIToolbar = {
         let toolBar = UIToolbar()
@@ -30,6 +31,18 @@ class TabBarController: UITabBarController {
         return picker
     }()
 
+    private let alertDialog: UIAlertController = {
+        let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Theme"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Select lector"
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        return alert
+    }()
+
     private let fetchRequest: NSFetchRequest<Lectors> = {
         var fetchRequest: NSFetchRequest<Lectors> = Lectors.fetchRequest()
         return fetchRequest
@@ -39,31 +52,24 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         createTabs()
         setupView()
+        alertDialog.textFields![1].inputAccessoryView = toolBar
+        alertDialog.textFields![1].inputView = picker
+        alertDialog.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
+            let theme = self.alertDialog.textFields![0].text!
+            let name = self.alertDialog.textFields![1].text!
+            self.insertItem(theme, name)
+        }))
         picker.delegate = self
     }
 
     private func createAlert() {
-        let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "Theme"
-        }
-        alert.addTextField { (textField) in
-            textField.placeholder = "Select lector"
-            textField.inputView = self.picker
-            textField.inputAccessoryView = self.toolBar
-        }
-        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
-            if let theme = alert.textFields?.first?.text {
-                self.insertItem(theme)
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        present(alertDialog, animated: true, completion: nil)
     }
 
-    private func insertItem(_ theme: String) {
+    private func insertItem(_ theme: String,_ lector: String) {
         let lecture = Lectures(context: context)
         lecture.theme = theme
+        lecture.lector = lector
         do {
             try context.save()
         } catch {
@@ -122,5 +128,10 @@ extension TabBarController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let lectors = try? context.fetch(fetchRequest)
         return lectors?[row].name
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let lectors = try? context.fetch(fetchRequest)
+        alertDialog.textFields![1].text = lectors?[row].name
     }
 }

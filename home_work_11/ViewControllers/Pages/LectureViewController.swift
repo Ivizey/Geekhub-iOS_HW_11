@@ -41,7 +41,7 @@ class LectureViewController: UITableViewController {
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         let lecture = fetchedResultController.object(at: indexPath)
         cell.textLabel?.text = lecture.theme
-        cell.detailTextLabel?.text = lecture.theme
+        cell.detailTextLabel?.text = lecture.lector
         return cell
     }
 
