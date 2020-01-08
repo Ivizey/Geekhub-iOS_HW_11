@@ -29,6 +29,7 @@
 		471ED3F223C0F48C0073F309 /* LectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F123C0F48C0073F309 /* LectorViewController.swift */; };
 		471ED3F623C0F9EE0073F309 /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F523C0F9EE0073F309 /* StudentViewController.swift */; };
 		471ED3F823C0FB860073F309 /* HomeWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */; };
+		471ED40523C650AD0073F309 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40423C650AD0073F309 /* MarkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		471ED3F123C0F48C0073F309 /* LectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectorViewController.swift; sourceTree = "<group>"; };
 		471ED3F523C0F9EE0073F309 /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
 		471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkViewController.swift; sourceTree = "<group>"; };
+		471ED40423C650AD0073F309 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				471ED3F123C0F48C0073F309 /* LectorViewController.swift */,
 				471ED3F523C0F9EE0073F309 /* StudentViewController.swift */,
 				471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */,
+				471ED40423C650AD0073F309 /* MarkViewController.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				471ED3F223C0F48C0073F309 /* LectorViewController.swift in Sources */,
 				471ED3E823BF772D0073F309 /* Lectors+CoreDataProperties.swift in Sources */,
 				471ED3E423BF772D0073F309 /* Students+CoreDataProperties.swift in Sources */,
+				471ED40523C650AD0073F309 /* MarkViewController.swift in Sources */,
 				471ED3C323BF72F30073F309 /* JournalModel.xcdatamodeld in Sources */,
 				471ED3E323BF772D0073F309 /* Students+CoreDataClass.swift in Sources */,
 				471ED3A823BF5D5A0073F309 /* AppDelegate.swift in Sources */,

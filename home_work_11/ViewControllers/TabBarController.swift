@@ -13,7 +13,6 @@ class TabBarController: UITabBarController {
 
     private let nameView = ["Lecture", "Lector", "Student", "Home work"]
     private let context = CoreDataStack.shared.persistentContainer.viewContext
-    var textFieldPicker: UITextField?
 
     private let toolBar: UIToolbar = {
         let toolBar = UIToolbar()
@@ -50,11 +49,13 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        createTabs()
+        showTabs()
         setupView()
         alertDialog.textFields![1].inputAccessoryView = toolBar
         alertDialog.textFields![1].inputView = picker
-        alertDialog.addAction(UIAlertAction(title: "Add", style: .default, handler: { (action) in
+        alertDialog.addAction(UIAlertAction(title: "Add",
+                                            style: .default,
+                                            handler: { _ in
             let theme = self.alertDialog.textFields![0].text!
             let name = self.alertDialog.textFields![1].text!
             self.insertItem(theme, name)
@@ -62,11 +63,7 @@ class TabBarController: UITabBarController {
         picker.delegate = self
     }
 
-    private func createAlert() {
-        present(alertDialog, animated: true, completion: nil)
-    }
-
-    private func insertItem(_ theme: String,_ lector: String) {
+    private func insertItem(_ theme: String, _ lector: String) {
         let lecture = Lectures(context: context)
         lecture.theme = theme
         lecture.lector = lector
@@ -78,27 +75,18 @@ class TabBarController: UITabBarController {
         }
     }
 
-    private func createTabs() {
-        let lectureViewController = LectureViewController()
-        let imageLecture = UIImage(systemName: "doc")
-        lectureViewController.tabBarItem = UITabBarItem(title: nameView[0], image: imageLecture, tag: 0)
+    private func createTab(_ view: UIViewController, _ image: String, _ tag: Int) -> UIViewController {
+        let viewController = view
+        let image = UIImage(systemName: image)
+        viewController.tabBarItem = UITabBarItem(title: nameView[tag], image: image, tag: tag)
+        return viewController
+    }
 
-        let lectorViewController = LectorViewController()
-        let imagePerson = UIImage(systemName: "person")
-        lectorViewController.tabBarItem = UITabBarItem(title: nameView[1], image: imagePerson, tag: 1)
-
-        let studentViewController = StudentViewController()
-        let imageStudent = UIImage(systemName: "person.2")
-        studentViewController.tabBarItem = UITabBarItem(title: nameView[2], image: imageStudent, tag: 2)
-
-        let homeWorkViewController = HomeWorkViewController()
-        let imageHomeWork = UIImage(systemName: "book")
-        homeWorkViewController.tabBarItem = UITabBarItem(title: nameView[3], image: imageHomeWork, tag: 3)
-
-        viewControllers = [lectureViewController,
-                           studentViewController,
-                           homeWorkViewController,
-                           lectorViewController
+    private func showTabs() {
+        viewControllers = [createTab(LectureViewController(), "doc", 0),
+                           createTab(LectorViewController(), "person", 1),
+                           createTab(StudentViewController(), "person.2", 2),
+                           createTab(HomeWorkViewController(), "book", 3)
         ]
     }
 
@@ -110,7 +98,7 @@ class TabBarController: UITabBarController {
     }
 
     @objc private func handleAddAlert() {
-        createAlert()
+        present(alertDialog, animated: true, completion: nil)
     }
 }
 

@@ -48,4 +48,8 @@ class StudentViewController: UITableViewController {
         context.delete(fetchedResultController.object(at: indexPath))
         try? context.save()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        <#code#>
+    }
 }
