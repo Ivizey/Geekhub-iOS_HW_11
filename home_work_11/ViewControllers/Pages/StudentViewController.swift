@@ -50,6 +50,6 @@ class StudentViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        self.navigationController?.pushViewController(MarkViewController(), animated: true)
     }
 }

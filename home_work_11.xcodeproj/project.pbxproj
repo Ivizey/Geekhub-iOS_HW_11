@@ -30,6 +30,7 @@
 		471ED3F623C0F9EE0073F309 /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F523C0F9EE0073F309 /* StudentViewController.swift */; };
 		471ED3F823C0FB860073F309 /* HomeWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */; };
 		471ED40523C650AD0073F309 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40423C650AD0073F309 /* MarkViewController.swift */; };
+		471ED40723C793540073F309 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40623C793540073F309 /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		471ED3F523C0F9EE0073F309 /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
 		471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkViewController.swift; sourceTree = "<group>"; };
 		471ED40423C650AD0073F309 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
+		471ED40623C793540073F309 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				471ED3AB23BF5D5A0073F309 /* TabBarController.swift */,
+				471ED40623C793540073F309 /* AlertViewController.swift */,
 				471ED3F923C0FCBC0073F309 /* Pages */,
 			);
 			path = ViewControllers;
@@ -257,6 +260,7 @@
 				471ED3F623C0F9EE0073F309 /* StudentViewController.swift in Sources */,
 				471ED3AC23BF5D5A0073F309 /* TabBarController.swift in Sources */,
 				471ED3BC23BF5E390073F309 /* LectureViewController.swift in Sources */,
+				471ED40723C793540073F309 /* AlertViewController.swift in Sources */,
 				471ED3EB23BF772D0073F309 /* Marks+CoreDataClass.swift in Sources */,
 				471ED3E523BF772D0073F309 /* Lectures+CoreDataClass.swift in Sources */,
 				471ED3F223C0F48C0073F309 /* LectorViewController.swift in Sources */,
