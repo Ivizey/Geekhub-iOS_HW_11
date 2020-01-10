@@ -31,6 +31,8 @@
 		471ED3F823C0FB860073F309 /* HomeWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */; };
 		471ED40523C650AD0073F309 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40423C650AD0073F309 /* MarkViewController.swift */; };
 		471ED40723C793540073F309 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40623C793540073F309 /* AlertViewController.swift */; };
+		471ED40B23C8F4890073F309 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40A23C8F4890073F309 /* Alert.swift */; };
+		471ED40D23C902D10073F309 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471ED40C23C902D10073F309 /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		471ED3F723C0FB860073F309 /* HomeWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorkViewController.swift; sourceTree = "<group>"; };
 		471ED40423C650AD0073F309 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		471ED40623C793540073F309 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		471ED40A23C8F4890073F309 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		471ED40C23C902D10073F309 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				471ED3AB23BF5D5A0073F309 /* TabBarController.swift */,
+				471ED40A23C8F4890073F309 /* Alert.swift */,
+				471ED40C23C902D10073F309 /* PickerView.swift */,
 				471ED40623C793540073F309 /* AlertViewController.swift */,
 				471ED3F923C0FCBC0073F309 /* Pages */,
 			);
@@ -256,6 +262,7 @@
 				471ED3BF23BF72070073F309 /* CoreDataStack.swift in Sources */,
 				471ED3E723BF772D0073F309 /* Lectors+CoreDataClass.swift in Sources */,
 				471ED3F823C0FB860073F309 /* HomeWorkViewController.swift in Sources */,
+				471ED40B23C8F4890073F309 /* Alert.swift in Sources */,
 				471ED3EA23BF772D0073F309 /* HomeWorks+CoreDataProperties.swift in Sources */,
 				471ED3F623C0F9EE0073F309 /* StudentViewController.swift in Sources */,
 				471ED3AC23BF5D5A0073F309 /* TabBarController.swift in Sources */,
@@ -272,6 +279,7 @@
 				471ED3A823BF5D5A0073F309 /* AppDelegate.swift in Sources */,
 				471ED3EC23BF772D0073F309 /* Marks+CoreDataProperties.swift in Sources */,
 				471ED3EE23BF7A690073F309 /* FetchedResultControllerDelegate.swift in Sources */,
+				471ED40D23C902D10073F309 /* PickerView.swift in Sources */,
 				471ED3E923BF772D0073F309 /* HomeWorks+CoreDataClass.swift in Sources */,
 				471ED3AA23BF5D5A0073F309 /* SceneDelegate.swift in Sources */,
 				471ED3E623BF772D0073F309 /* Lectures+CoreDataProperties.swift in Sources */,

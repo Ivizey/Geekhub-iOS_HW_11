@@ -30,10 +30,10 @@ class AlertViewController: UIViewController {
 
     private let alertDialog: UIAlertController = {
         let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
-        alert.addTextField { (textField) in
+        alert.addTextField { textField in
             textField.placeholder = "Theme"
         }
-        alert.addTextField { (textField) in
+        alert.addTextField { textField in
             textField.placeholder = "Select lector"
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -69,10 +69,6 @@ class AlertViewController: UIViewController {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-    }
-
-    func showAlertDialog() {
-        present(alertDialog, animated: true, completion: nil)
     }
 }
 
