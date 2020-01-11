@@ -42,7 +42,7 @@ class TabBarController: UITabBarController {
     }
 
     @objc private func handleAddAlert() {
-        Alert.showBasicAlert(viewController: self, view: tabBar.selectedItem?.title ?? "")
+        AlertViewController.showBasicAlert(viewController: self, view: tabBar.selectedItem?.title ?? "")
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

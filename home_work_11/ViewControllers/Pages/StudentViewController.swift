@@ -38,7 +38,7 @@ class StudentViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         let students = fetchedResultController.object(at: indexPath)
-        cell.textLabel?.text = students.name! + " " + "Surname"
+        cell.textLabel?.text = students.name! + " " + students.surname!
         return cell
     }
 

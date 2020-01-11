@@ -38,7 +38,7 @@ class LectorViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         let lectors = fetchedResultController.object(at: indexPath)
-        cell.textLabel?.text = lectors.name! + " " + "Surname"
+        cell.textLabel?.text = lectors.name! + " " + lectors.surname!
         return cell
     }
 

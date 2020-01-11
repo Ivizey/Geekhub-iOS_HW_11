@@ -40,7 +40,7 @@ class HomeWorkViewController: UITableViewController {
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         let homeWorks = fetchedResultController.object(at: indexPath)
         cell.textLabel?.text = homeWorks.task
-        cell.detailTextLabel?.text = homeWorks.task
+        cell.detailTextLabel?.text = homeWorks.lecture
         return cell
     }
 

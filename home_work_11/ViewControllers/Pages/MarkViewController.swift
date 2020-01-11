@@ -39,20 +39,8 @@ class MarkViewController: UITableViewController {
         view.backgroundColor = .white
     }
 
-    private func insertItem(_ mark: String, _ homework: String, _ clarification: String) {
-        let marks = Marks(context: context)
-        marks.clarification = clarification
-        marks.homework = homework
-        marks.mark = mark
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-        }
-    }
-
     @objc private func handleAddAlert() {
+        AlertViewController.showMarkAlert(viewController: self)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,7 +51,7 @@ class MarkViewController: UITableViewController {
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseIdentifier)
         let marks = fetchedResultController.object(at: indexPath)
-        cell.textLabel?.text = String(indexPath.row)
+        cell.textLabel?.text = marks.mark
         cell.detailTextLabel?.text = marks.homework
         return cell
     }

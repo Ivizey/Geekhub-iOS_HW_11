@@ -2,94 +2,106 @@
 //  AlertViewController.swift
 //  home_work_11
 //
-//  Created by Pavel Bondar on 09.01.2020.
+//  Created by Pavel Bondar on 10.01.2020.
 //  Copyright © 2020 Pavel Bondar. All rights reserved.
 //
 
-import UIKit
-import CoreData
+import UIKit.UIAlertController
 
-class AlertViewController: UIViewController {
-    private let context = CoreDataStack.shared.persistentContainer.viewContext
-
-    private let toolBar: UIToolbar = {
-        let toolBar = UIToolbar()
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: nil)
-        toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.sizeToFit()
-        toolBar.setItems([doneButton], animated: true)
-        return toolBar
-    }()
-
-    private let picker: UIPickerView = {
-        let picker = UIPickerView()
+struct AlertViewController {
+    private static var currentView: String?
+    private static let picker: PickerViewController = {
+        let picker = PickerViewController()
+        picker.delegate = picker
         picker.backgroundColor = .white
         return picker
     }()
 
-    private let alertDialog: UIAlertController = {
+    private static let alert: UIAlertController = {
         let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "Theme"
+        alert.addTextField(configurationHandler: nil)
+        alert.addTextField { field in
+            field.inputView = picker
+            field.inputAccessoryView = picker.showToolBar()
         }
-        alert.addTextField { textField in
-            textField.placeholder = "Select lector"
-        }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { _ in
+            let firstField = alert.textFields![0].text!
+            let secondField = alert.textFields![1].text!
+            if !firstField.isEmpty && !secondField.isEmpty {
+                let data = DataControl()
+                data.insertItem(firstField, secondField, currentView ?? "")
+            }
+            clearFields()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            clearFields()
+        }))
         return alert
     }()
 
-    private let fetchRequest: NSFetchRequest<Lectors> = {
-        var fetchRequest: NSFetchRequest<Lectors> = Lectors.fetchRequest()
-        return fetchRequest
+    private static let alertForMark: UIAlertController = {
+        let alert = UIAlertController(title: "Add new", message: nil, preferredStyle: .alert)
+        alert.addTextField { field in
+            field.placeholder = "Mark"
+        }
+        alert.addTextField { field in
+            field.placeholder = "Clarification"
+        }
+        alert.addTextField { field in
+            field.inputView = picker
+            field.placeholder = "Home work"
+            field.inputAccessoryView = picker.showToolBar()
+        }
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { _ in
+            let firstField = alert.textFields![0].text!
+            let secondField = alert.textFields![1].text!
+            if !firstField.isEmpty && !secondField.isEmpty {
+                let data = DataControl()
+                data.insertItem(firstField, secondField, "")
+            }
+            clearFields()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            clearFields()
+        }))
+        return alert
     }()
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        alertDialog.textFields![1].inputAccessoryView = toolBar
-        alertDialog.textFields![1].inputView = picker
-        alertDialog.addAction(UIAlertAction(title: "Add",
-                                            style: .default,
-                                            handler: { _ in
-            let theme = self.alertDialog.textFields![0].text!
-            let name = self.alertDialog.textFields![1].text!
-            self.insertItem(theme, name)
-        }))
-        picker.delegate = self
+    static private func clearFields() {
+        alert.textFields?[0].text = ""
+        alert.textFields?[1].text = ""
     }
 
-    private func insertItem(_ theme: String, _ lector: String) {
-        let lecture = Lectures(context: context)
-        lecture.theme = theme
-        lecture.lector = lector
-        do {
-            try context.save()
-        } catch {
-            let nserror = error as NSError
-            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+    static func showBasicAlert(viewController: UIViewController, view: String) {
+        let placeholders = selectPlaceholder(view: view)
+        currentView = view
+        alert.textFields?[0].placeholder = placeholders[0]
+        alert.textFields?[1].placeholder = placeholders[1]
+        DispatchQueue.main.async { viewController.present(alert, animated: true) }
+    }
+
+    static func showMarkAlert(viewController: UIViewController) {
+        DispatchQueue.main.async { viewController.present(alertForMark, animated: true) }
+    }
+
+    static func dismiss() {
+        alert.textFields?[1].endEditing(true)
+    }
+
+    static func passItem(item: String) {
+        alert.textFields?[1].text = item
+    }
+
+    private static func selectPlaceholder(view: String) -> [String] {
+        switch view {
+        case "Lector", "Student":
+            return ["Name", "Surname"]
+        case "Home work":
+            return ["Task", "Lecture"]
+        case "Lecture":
+            return ["Theme", "Select lector"]
+        default:
+            return ["", ""]
         }
-    }
-}
-
-// MARK: - UIPickerViewDataSource, UIPickerViewDelegate
-extension AlertViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let lectors = try? context.fetch(fetchRequest)
-        return lectors?.count ?? 0
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let lectors = try? context.fetch(fetchRequest)
-        return lectors?[row].name
-    }
-
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let lectors = try? context.fetch(fetchRequest)
-        alertDialog.textFields![1].text = lectors?[row].name
     }
 }
