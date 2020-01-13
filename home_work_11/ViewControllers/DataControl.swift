@@ -30,11 +30,22 @@ class DataControl {
             lecture.theme = firstField
             lecture.lector = secondField
         default:
-            let mark = Marks(context: context)
+            return
+        }
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+
+    func insertMark(_ firstField: String, _ secondField: String, _ thirdField: String, _ student: Students) {
+        let mark = Marks(context: context)
             mark.mark = firstField
             mark.clarification = secondField
-            mark.homework = secondField
-        }
+            mark.homework = thirdField
+            mark.students = student
         do {
             try context.save()
         } catch {

@@ -1,5 +1,5 @@
 //
-//  PickerViewController.swift
+//  LectorsPicker.swift
 //  home_work_11
 //
 //  Created by Pavel Bondar on 11.01.2020.
@@ -9,11 +9,9 @@
 import UIKit.UIPickerView
 import CoreData.NSFetchRequest
 
-class PickerViewController: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+class LectorsPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
     private let context = CoreDataStack.shared.persistentContainer.viewContext
-    private let fetchRequestLetors: NSFetchRequest<Lectors> = Lectors.fetchRequest()
-    private let fetchRequestHomeWork: NSFetchRequest<HomeWorks> = HomeWorks.fetchRequest()
-    private let isLector = true
+    private let fetchRequest: NSFetchRequest<Lectors> = Lectors.fetchRequest()
 
     func showToolBar() -> UIToolbar {
         let toolBar = UIToolbar()
@@ -36,17 +34,17 @@ class PickerViewController: UIPickerView, UIPickerViewDelegate, UIPickerViewData
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        let lectors = try? context.fetch(fetchRequestLetors)
+        let lectors = try? context.fetch(fetchRequest)
         return lectors?.count ?? 0
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let lectors = try? context.fetch(fetchRequestLetors)
-        return lectors?[row].name
+        let lectors = try? context.fetch(fetchRequest)
+        return (lectors?[row].name!)! + " " + (lectors?[row].surname!)!
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let lectors = try? context.fetch(fetchRequestLetors)
-        AlertViewController.passItem(item: lectors?[row].name ?? "")
+        let lectors = try? context.fetch(fetchRequest)
+        AlertViewController.passItem(item: (lectors?[row].name!)! + " " + (lectors?[row].surname!)!)
     }
 }

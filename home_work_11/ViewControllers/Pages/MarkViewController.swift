@@ -10,6 +10,7 @@ import UIKit.UITableViewController
 import CoreData.NSFetchRequest
 
 class MarkViewController: UITableViewController {
+    var students: Students?
     private let reuseIdentifier = "cell"
     private let context = CoreDataStack.shared.persistentContainer.viewContext
     // MARK: - NSFetchedResultsController
@@ -17,6 +18,7 @@ class MarkViewController: UITableViewController {
     private lazy var fetchedResultController: NSFetchedResultsController<Marks> = {
         let fetchRequest: NSFetchRequest<Marks> = Marks.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "mark", ascending: true)]
+        fetchRequest.predicate = NSPredicate(format: "students == %@", self.students!)
         let controller = NSFetchedResultsController<Marks>(fetchRequest: fetchRequest,
                                                            managedObjectContext: context,
                                                            sectionNameKeyPath: nil,
@@ -26,11 +28,6 @@ class MarkViewController: UITableViewController {
         return controller
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
-    }
-
     private func setupView() {
         let buttonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddAlert))
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -39,8 +36,13 @@ class MarkViewController: UITableViewController {
         view.backgroundColor = .white
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+    }
+
     @objc private func handleAddAlert() {
-        AlertViewController.showMarkAlert(viewController: self)
+        AlertMarkViewController.showBasicAlert(viewController: self, student: students!)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -21,7 +21,6 @@
         <attribute name="clarification" optional="YES" attributeType="String"/>
         <attribute name="homework" optional="YES" attributeType="String"/>
         <attribute name="mark" optional="YES" attributeType="String"/>
-        <attribute name="student" optional="YES" attributeType="String"/>
         <relationship name="homeworks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HomeWorks" inverseName="marks" inverseEntity="HomeWorks"/>
         <relationship name="students" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Students" inverseName="marks" inverseEntity="Students"/>
     </entity>
@@ -34,7 +33,7 @@
         <element name="HomeWorks" positionX="-333.55859375" positionY="100.98046875" width="128" height="103"/>
         <element name="Lectors" positionX="220.8359375" positionY="-126.04296875" width="128" height="58"/>
         <element name="Lectures" positionX="-200.578125" positionY="-171.02734375" width="128" height="103"/>
-        <element name="Marks" positionX="-3.1640625" positionY="101.10546875" width="128" height="133"/>
+        <element name="Marks" positionX="-3.1640625" positionY="101.10546875" width="128" height="118"/>
         <element name="Students" positionX="246.51953125" positionY="130.62109375" width="128" height="88"/>
     </elements>
 </model>

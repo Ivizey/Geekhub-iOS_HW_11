@@ -28,7 +28,6 @@ class LectureViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Lecture"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     // MARK: - UITableView
