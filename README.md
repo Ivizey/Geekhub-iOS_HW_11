@@ -1,5 +1,5 @@
 # Journal (geekhub IOS home work #11)
-Simple, personal journaling
+The mobile application is designed to guide student achievement. Recording of topics of lectures, accounting of teachers, homework. To unload the teacher from the routine calculations.
 <p align="center">
     <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.02.png" width="200">
     <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.33.png" width="200">
