@@ -66,7 +66,7 @@ struct AlertViewController {
     }
 
     static private func clearFields() {
-        alert.textFields?.map({ $0.text = "" })
+        alert.textFields?.forEach({ field in field.text = "" })
     }
 
     static func dismiss() {

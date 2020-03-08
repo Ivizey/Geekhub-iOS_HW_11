@@ -31,18 +31,14 @@ struct AlertMarkViewController {
              field.inputAccessoryView = picker.showToolBar()
          }
          alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { _ in
-             let firstField = alert.textFields![0].text!
-             let secondField = alert.textFields![1].text!
-             let thirdField = alert.textFields![2].text!
-             if !firstField.isEmpty && !secondField.isEmpty && !thirdField.isEmpty {
-                 let data = DataControl()
-                data.insertMark(firstField, secondField, thirdField, student!)
-             }
-             clearFields()
+            guard var textField = alert.textFields else { return }
+            var fieldText = [String]()
+            let dataControl = DataControl()
+            textField.forEach { field in fieldText.append(field.text ?? "?") }
+            dataControl.insertMark(fiedsText: fieldText, student)
+            clearFields()
          }))
-         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-             clearFields()
-         }))
+         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in clearFields() }))
          return alert
      }()
 
@@ -52,7 +48,7 @@ struct AlertMarkViewController {
     }
 
     private static func clearFields() {
-        alert.textFields?.map({ $0.text = "" })
+        alert.textFields?.forEach({ field in field.text = "" })
     }
 
     static func dismiss() {

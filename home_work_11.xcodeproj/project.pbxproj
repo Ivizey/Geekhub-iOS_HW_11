@@ -121,9 +121,7 @@
 				471ED40A23C8F4890073F309 /* AlertViewController.swift */,
 				471ED41423CC92B10073F309 /* AlertMarkViewController.swift */,
 				471ED41023CA33FB0073F309 /* DataControl.swift */,
-				471ED40E23C9E3E70073F309 /* LectorsPicker.swift */,
-				471ED41223CB9C4C0073F309 /* LecturesPicker.swift */,
-				471ED41623CC9F750073F309 /* HomeWorksPicker.swift */,
+				4742557924151C3000D20F9B /* PickersView */,
 				471ED3F923C0FCBC0073F309 /* Pages */,
 			);
 			path = ViewControllers;
@@ -174,6 +172,16 @@
 				471ED40423C650AD0073F309 /* MarkViewController.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		4742557924151C3000D20F9B /* PickersView */ = {
+			isa = PBXGroup;
+			children = (
+				471ED40E23C9E3E70073F309 /* LectorsPicker.swift */,
+				471ED41223CB9C4C0073F309 /* LecturesPicker.swift */,
+				471ED41623CC9F750073F309 /* HomeWorksPicker.swift */,
+			);
+			path = PickersView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

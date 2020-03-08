@@ -40,12 +40,12 @@ class DataControl {
         }
     }
 
-    func insertMark(_ firstField: String, _ secondField: String, _ thirdField: String, _ student: Students) {
+    func insertMark(fiedsText: [String], _ student: Students?) {
         let mark = Marks(context: context)
-            mark.mark = firstField
-            mark.clarification = secondField
-            mark.homework = thirdField
-            mark.students = student
+            mark.mark = fiedsText[0]
+            mark.clarification = fiedsText[1]
+            mark.homework = fiedsText[2]
+            mark.students = student!
         do {
             try context.save()
         } catch {
