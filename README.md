@@ -3,8 +3,8 @@ The mobile application is designed to guide student achievement. Recording of to
 <p align="center">
     <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.02.png" width="200">
     <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.33.png" width="200">
-    <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.43.png" width="200">
-    <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-07%20at%2013.05.48.png" width="200">
+    <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-08%20at%2016.13.51.png" width="200">
+    <img src="https://github.com/Ivizey/Geekhub-iOS_HW_11/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202020-03-08%20at%2016.14.18.png" width="200">
 </p>
 
 ## Built With
