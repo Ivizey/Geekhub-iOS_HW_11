@@ -50,9 +50,6 @@ class StudentViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let makrController = MarkViewController()
-//        makrController.students = fetchedResultController.object(at: indexPath)
-//        self.navigationController?.pushViewController(MarkViewController(), animated: true)
         let makrController = MarkViewController()
         makrController.students = fetchedResultController.object(at: indexPath)
         navigationController?.pushViewController(makrController, animated: true)

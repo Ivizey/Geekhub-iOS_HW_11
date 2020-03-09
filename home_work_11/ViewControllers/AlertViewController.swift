@@ -9,7 +9,7 @@
 import UIKit.UIAlertController
 
 struct AlertViewController {
-    private static var currentView: String?
+    private static var currentView: UIViewController?
     private static let picker: LectorsPicker = {
         let picker = LectorsPicker()
         picker.delegate = picker
@@ -29,12 +29,12 @@ struct AlertViewController {
         alert.addTextField(configurationHandler: nil)
         alert.addTextField(configurationHandler: nil)
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { _ in
-            let firstField = alert.textFields!.first!.text!
-            let secondField = alert.textFields!.last!.text!
-            if !firstField.isEmpty && !secondField.isEmpty {
-                let data = DataControl()
-                data.insertItem(firstField, secondField, currentView ?? "")
-            }
+            var fieldText = [String]()
+            alert.textFields?.forEach({ field in
+                fieldText.append(field.text ?? "-")
+            })
+            let dataControl = DataControl()
+            dataControl.insertItem(fiedsText: fieldText, view: "")
             clearFields()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
@@ -44,25 +44,38 @@ struct AlertViewController {
     }()
 
     static private func openPicker() {
-        switch currentView {
+        guard let fieldInput = alert.textFields?.last else { return }
+        switch currentView?.title {
         case "Lecture":
-            alert.textFields?.last?.inputView = picker
+            fieldInput.inputView = picker
         case "Home work":
-            alert.textFields?.last?.inputView = pickerHW
+            fieldInput.inputView = pickerHW
         default:
-            alert.textFields?.last?.inputView = nil
-            alert.textFields?.last?.inputAccessoryView = nil
+            fieldInput.inputView = nil
+            fieldInput.inputAccessoryView = nil
         }
         alert.textFields?.last?.inputAccessoryView = picker.showToolBar()
     }
 
-    static func showBasicAlert(viewController: UIViewController, view: String) {
-        let placeholders = selectPlaceholder(view: view)
-        currentView = view
+    static func showBasicAlert(viewController: UIViewController) {
+        currentView = viewController
         openPicker()
-        alert.textFields?.first?.placeholder = placeholders.first
-        alert.textFields?.last?.placeholder = placeholders.last
+        alert.textFields?.first?.placeholder = selectPlaceholder().first
+        alert.textFields?.last?.placeholder = selectPlaceholder().last
         DispatchQueue.main.async { viewController.present(alert, animated: true) }
+    }
+
+    private static func selectPlaceholder() -> [String] {
+        switch currentView?.title {
+        case "Lector", "Student":
+            return ["Name", "Surname"]
+        case "Home work":
+            return ["Task", "Lecture"]
+        case "Lecture":
+            return ["Theme", "Select lector"]
+        default:
+            return ["", ""]
+        }
     }
 
     static private func clearFields() {
@@ -75,18 +88,5 @@ struct AlertViewController {
 
     static func passItem(item: String) {
         alert.textFields?.last?.text = item
-    }
-
-    private static func selectPlaceholder(view: String) -> [String] {
-        switch view {
-        case "Lector", "Student":
-            return ["Name", "Surname"]
-        case "Home work":
-            return ["Task", "Lecture"]
-        case "Lecture":
-            return ["Theme", "Select lector"]
-        default:
-            return ["", ""]
-        }
     }
 }

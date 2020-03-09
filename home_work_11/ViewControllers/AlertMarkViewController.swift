@@ -35,7 +35,7 @@ struct AlertMarkViewController {
             var fieldText = [String]()
             let dataControl = DataControl()
             textField.forEach { field in fieldText.append(field.text ?? "?") }
-            dataControl.insertMark(fiedsText: fieldText, student)
+            dataControl.insertMark(fiedsText: fieldText, student: student)
             clearFields()
          }))
          alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in clearFields() }))

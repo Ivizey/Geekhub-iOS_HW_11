@@ -12,6 +12,13 @@ class TabBarController: UITabBarController {
     private let nameView = [ "Lecture", "Lector", "Student", "Home work"]
     private let imageView = ["doc", "person", "person.2", "book"]
 
+    enum ViewList {
+        case lecture
+        case lector
+        case student
+        case homeWork
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         showTabs()
@@ -42,7 +49,7 @@ class TabBarController: UITabBarController {
     }
 
     @objc private func handleAddAlert() {
-        AlertViewController.showBasicAlert(viewController: self, view: tabBar.selectedItem?.title ?? "")
+        AlertViewController.showBasicAlert(viewController: self)
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
